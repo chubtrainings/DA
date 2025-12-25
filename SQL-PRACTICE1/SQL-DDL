@@ -1,0 +1,265 @@
+SQL - ORACLE - PRACTICE 1:
+===============
+
+Oracle SQL:
+
+	-- Structured Query Language
+	-- 5 sub Languages
+	
+		-- DDL
+			-- DATA DEFINITION LANGUAGE 
+			-- CREATE, ALTER, DROP, RENAME, TRUNCATE
+		-- DML
+			-- INSERT, UPDATE, DELETE
+		-- DCL
+			-- GRANT, REVOKE
+		-- DQL
+			-- SELECT
+		-- TCL
+			-- COMMIT, ROLLBACK, SAVEPOINT
+		
+	
+	
+	1. CREATE TABLE: (DDL)
+	
+	Syntax:
+			CREATE TABLE table_name (
+				column_name1 datatype [NOT NULL],
+				column_name2 datatype [NOT NULL],
+				...
+				column_nameN datatype [NOT NULL],
+				[CONSTRAINT constraint_name PRIMARY KEY (column_name)],
+				[CONSTRAINT constraint_name CHECK (condition)]
+			);
+			
+	
+	
+		Table_name:     		  Name your new table. It must be unique in Oracle’s schema and follow its naming conventions.
+		-----------
+		column_name:    		  Each table has one or more columns, each of which needs a name. These names should describe their data.
+		-----------
+		Datatype:       		  Configure each column’s data type. To maintain data integrity, performance, and avoid difficulties, choose the right data type. Arithmetic operations are allowed on NUMBER types but not RAW types in Oracle. A common data type is:
+		-----------
+		VARCHAR2(size): 		  For variable-length character strings. Set a maximum size (e.g., VARCHAR2(50) for 50 characters). Strings longer than the defined size are stored incorrectly. You can store more than 4000 bytes in LONG (up to 2GB) or CLOB (up to 4GB minus 1 block, or 128TB for bigfile tablespaces).
+		-----------
+		CHAR(size):     		  Use CHAR(size) for fixed-length character strings. A shorter string will be padded with spaces to the desired size.
+		-----------
+		NUMBER(precision, scale): Stores integers and decimals. Precision is the total number of significant digits, and scale is the ones right of the decimal point. Number(6,2) may hold 1234.56. Max precision is 38 digits, max scale is 127.
+		------------------------
+		DATE: 					  By default, DATE stores date and time information (day/month/year).
+		-----------
+		TIMESTAMP: 				  TIMESTAMP may store date and time with greater precision, including fractional seconds and time zone information.
+		-----------
+		Large Object (LOB) Datatypes: Such as CLOB for character data, BLOB for binary data, and BFILE for external binary files, are used for storing very large amounts of unstructured data.
+		----------------------------
+		
+		
+		Costraints:
+		===============
+		
+		NOT NULL Constraint: A column must always have a value. Oracle errors if you insert a row without a NOT NULL column value. Data quality and business standards, such as never leaving a product name unfilled, depend on this constraint.
+		===================
+		Other Constraints: To guarantee data integrity, other constraints are usually defined during table creation:
+		=================
+		PRIMARY KEY: A primary key uniquely identifies each row in a table. Both NOT NULL and UNIQUE limitations apply.
+		===========
+		UNIQUE: All values in a column or collection of columns must be unique, but NULL values are allowed.
+		=======
+		FOREIGN KEY: A foreign key links data in two tables, ensuring referential integrity by requiring values to match in both tables.
+		===========
+		CHECK: Sets and enforces rules for column values. See CHECK (Salary > 0)
+		=======
+		
+		TABLESPACE Clause: You can define the tablespace where the table’s data will be kept. Not specified, the table will be created in the user’s default permanent tablespace. For better management, performance, and recovery, DBAs build independent tablespaces for different applications or data types (e.g., HR_DATA, HR_INDEX).
+		==================
+		Invisible Columns: Oracle Database 12c allows INVISIBLE columns. The absence of these columns in DESCRIBE output and SELECT * queries allows schema evolution without affecting existing applications.
+		=================
+		CREATE TABLE … AS SELECT (CTAS): A powerful variation that generates a new table and populates it with data by performing a SELECT statement against one or more tables or views.
+		===============================
+		
+		
+		
+	2. ALTER TABLE: (DDL)
+		-- ALTER TABLE is a fundamental DDL command that lets you change the structure of a generated table. 
+		-- Flexibility is needed to change your database structure to changing business needs without dropping and re-creating tables (which would lose data). 
+		-- Tables can be defined by adding, updating, or removing columns and adjusting characteristics.
+
+		Common ALTER TABLE operations:
+
+		Adding a Column: Use the ADD clause to add a column to a table. Usually easy. Before adding a NOT NULL column, you must set a default value or update existing rows or the process will fail.
+		=================
+		Modifying a Column: The MODIFY clause lets you update a column’s definition. Adjusting its size or data type may be necessary.
+		=================
+		Check that no data values exceed the new column size before reducing it. Prior to imposing the NOT NULL constraint, all rows must have a non-null value for the column you’re updating. Under some scenarios, Oracle can convert CHAR to VARCHAR2 and vice-versa.
+		
+		Dropping a Column: Using the DROP COLUMN clause, you can eliminate a column that is no longer needed.
+		=================
+		If the column is a constraint (e.g., a foreign key in another table), the CASCADE CONSTRAINTS option drops all dependent constraints. Oracle Database 12c lets you mark columns as UNUSED and physically dump them during a scheduled downtime to reduce peak-hour effect.
+		
+		Renaming a Table: The RENAME statement changes a table’s name, however it’s not part of ALTER TABLE.
+		=================
+		Renaming a Column: Use the RENAME COLUMN clause to rename a table column.
+		=================
+		Renaming Constraints: You can rename constraints.
+		=====================
+		Enabling/Disabling Constraints: ALTER TABLE can temporarily disable or enable constraints.
+		==============================
+		** Disabling a foreign key constraint in another table before disabling a primary key or unique key constraint is necessary. SQL scripts can automate cascade-delete constraint disabling or enabling.
+		Management of Tables and Triggers
+		==================================
+		
+		Syntax:
+			ALTER TABLE table_name {ENABLE | DISABLE} TABLE LOCK;: Controls whether DDL operations are allowed on the table.
+			=====================================================
+			ALTER TABLE table_name {ENABLE | DISABLE} ALL TRIGGERS;: Enables or disables all triggers associated with the table.
+			=======================================================
+			Storage Properties and Space Management: DBAs can change PCTFREE, PCTUSED, INITRANS, and STORAGE settings using ALTER TABLE. This can also deallocate unused table segment space to free up space. In Oracle Database 10g, the ALTER TABLESPACE command’s RENAME TO clause renames tablespaces. If row movement is enabled and the tablespace employs automated segment space management, the ALTER TABLE…SHRINK SPACE statement can modify the high-water mark for advanced space management.
+			===================================================
+			
+			
+			
+	3. DROP TABLE:  (DDL)
+	
+		The DDL command DROP TABLE deletes a table including its data, indexes, and constraints.
+		
+	 syntax:
+		DROP TABLE table_name;
+		
+		Since Oracle Database 10g, DROP TABLE commands do not immediately destroy tables. 
+		Instead, it’s in the “recycle bin”. This safety feature recovers dropped tables quickly. 
+		For tablespace space reasons, objects stay in the recycling bin until they are expressly purged or automatically eliminated.
+				
+			Recovering Dropped Tables: Oracle Database 10g and subsequent versions include the FLASHBACK TABLE TO BEFORE DROP command to quickly recover dropped tables.
+			Permanent Deletion (PURGE Clause): Use the PURGE clause with the DROP TABLE statement to permanently delete a table and free up its space without using the recycling bin.
+			PURGE insures permanent removal of the table from the recycle bin.
+			Remember that dropping a table commits the transaction permanently. The only method to undo an index decrease is to rebuild it. Using DROP TABLE in production contexts requires significant caution. Dropping and re-creating a table makes it unavailable until all grants are reissued, therefore it’s only allowed in development or test settings.
+			
+			
+	
+	
+	DATE FORMATS:
+	=============
+	
+				In Oracle, **you don’t really “change the date format of the data”** — dates are **stored internally in a fixed format**.
+				What you *can* change is **how Oracle interprets the date string at insert time** and **how it is displayed**.
+
+				Below are **all correct ways**, from safest to risky.
+
+				---
+
+				## ✅ BEST & RECOMMENDED (No session change)
+
+				### 1️⃣ Use ANSI DATE literal (preferred)
+
+				```sql
+				INSERT INTO students (studentid, firstname, lastname, enrollmentdate, major)
+				VALUES (100004, 'David', 'Miller', DATE '2023-12-25', 'Mathematics');
+				```
+
+				✔ Independent of session
+				✔ No NLS issues
+				✔ Production-safe
+
+				---
+
+				### 2️⃣ Use `TO_DATE` with your desired format
+
+				You explicitly control the format **per insert**.
+
+				```sql
+				INSERT INTO students (studentid, firstname, lastname, enrollmentdate, major)
+				VALUES (
+				  100005,
+				  'Eva',
+				  'Wilson',
+				  TO_DATE('25-12-2023', 'DD-MM-YYYY'),
+				  'Physics'
+				);
+				```
+
+				✔ Safe
+				✔ Clear
+				✔ Recommended if input comes in different formats
+
+				---
+
+				## ⚠️ SESSION-LEVEL CHANGE (Use carefully)
+
+				### 3️⃣ Change date format for your session
+
+				This changes how Oracle **implicitly converts strings to DATE**.
+
+				```sql
+				ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YYYY';
+				```
+
+				Then:
+
+				```sql
+				INSERT INTO students (studentid, firstname, lastname, enrollmentdate, major)
+				VALUES (100006, 'Frank', 'Taylor', '25-12-2023', 'Chemistry');
+				```
+
+				⚠️ **Risky**
+
+				* Affects all date conversions in the session
+				* Can break other SQL
+				* Not recommended in applications
+
+				---
+
+				## 🚫 DO NOT DO THIS (Bad practice)
+
+				```sql
+				INSERT INTO students (studentid, firstname, lastname, enrollmentdate, major)
+				VALUES (100007, 'Grace', 'Hall', '2023-12-25', 'Biology');
+				```
+
+				❌ Relies on default NLS settings
+				❌ Works on one machine, fails on another
+
+				---
+
+				## 🧠 Important Concept (Must remember)
+
+				> **DATE columns do not have formats**
+				> Formats apply **only when converting TO/FROM strings**
+
+				---
+
+				## 📌 How to check current session format
+
+				```sql
+				SELECT value
+				FROM nls_session_parameters
+				WHERE parameter = 'NLS_DATE_FORMAT';
+				```
+
+				---
+
+				## ✅ Quick decision guide
+
+				| Scenario              | What to use              |
+				| --------------------- | ------------------------ |
+				| Hardcoded dates       | `DATE 'YYYY-MM-DD'`      |
+				| User input            | `TO_DATE(input, format)` |
+				| Temporary SQL testing | `ALTER SESSION`          |
+				| Production app        | ❌ Never rely on NLS      |
+
+				---
+
+				## ✔ Final Recommendation
+
+				**Always control the format yourself** using:
+
+				```sql
+				DATE 'YYYY-MM-DD'
+				```
+
+				or
+
+				```sql
+				TO_DATE(..., ...)
+				```
+
+				
