@@ -1,0 +1,131 @@
+Common DDL Commands in Oracle
+  Command	Purpose
+    -- CREATE	Create new database objects
+    -- ALTER	Modify existing objects
+    -- RENAME	Rename database objects
+    -- TRUNCATE	Quickly remove all rows from a table
+    -- DROP	Delete objects permanently
+
+
+1. CREATE — Create New Tables or Objects
+  The CREATE command is used to define new tables or other database objects.
+
+Example. Create a New Table.
+
+    CREATE TABLE EMP_IND (
+      empno     NUMBER PRIMARY KEY,
+      ename     VARCHAR2(50),
+      nickname  VARCHAR2(50),
+      email     VARCHAR2(100)
+    );
+
+
+SQL
+Explanation: This creates a table named EMP_IND with 4 columns, where empno is set as the primary key.
+
+2. ALTER — Modify Existing Table Structures
+  The ALTER command lets you make structural changes to an existing table.
+
+    2.1 Add Column(s)
+    Add Single Column
+    
+    ALTER TABLE EMP_IND
+    ADD gender VARCHAR2(10);
+    SQL
+    Add Multiple Columns
+    
+    ALTER TABLE EMP_IND
+    ADD (
+      age        NUMBER,
+      department VARCHAR2(50)
+    );
+    
+SQL
+    2.2 Modify Column(s)
+    Modify Single Column
+    
+    ALTER TABLE EMP_IND
+    MODIFY ename VARCHAR2(100);
+    
+SQL
+    Modify Multiple Columns
+    
+    ALTER TABLE EMP_IND
+    MODIFY (
+      nickname VARCHAR2(100),
+      email    VARCHAR2(150)
+    );
+    
+SQL
+    2.3 Drop Column(s)
+    Drop Single Column
+    
+    ALTER TABLE EMP_IND
+    DROP COLUMN gender;
+    SQL
+    Drop Multiple Columns
+    
+    ALTER TABLE EMP_IND
+    DROP (age, department);
+    
+SQL
+    2.4 Rename a Column
+    ALTER TABLE EMP_IND
+    RENAME COLUMN nickname TO short_name;
+    
+SQL
+    Note. You can rename only one column at a time.
+
+3. RENAME — Rename Table Names
+  Used to rename the entire table.
+
+Example
+
+ALTER TABLE EMP_IND
+RENAME TO EMPLOYEE_MASTER;
+
+SQL
+Effect: The table EMP_IND is now renamed to EMPLOYEE_MASTER.
+
+4. TRUNCATE — Quickly Remove All Records from a Table
+Removes all rows from a table, retaining its structure for future use.
+
+Example
+
+TRUNCATE TABLE EMPLOYEE_MASTER;
+
+SQL
+Key Points
+
+Faster than DELETE
+Cannot be rolled back
+Keeps the table definition intact
+
+5. DROP — Delete Tables Permanently
+Deletes the entire table, including its data and structure.
+
+Example
+
+DROP TABLE EMPLOYEE_MASTER;
+
+SQL
+Effect: The table is permanently removed from the database (unless Flashback features are enabled).
+
+Summary Table of DDL Commands
+Command	Purpose	Rollback Allowed?
+CREATE	Create new database objects	No
+ALTER	Modify table structure	No
+RENAME	Rename the table or columns	No
+TRUNCATE	Quickly remove all data from a table	No
+DROP	Permanently delete a table	No
+Important Notes
+DDL operations are auto-committed
+Changes are saved immediately and cannot be undone.
+Always take a backup before running destructive DDL commands, such as TRUNCATE or DROP.
+Use DDL carefully in production environments to prevent accidental data loss.
+Conclusion
+Mastering DDL commands is essential for every Oracle developer and DBA. These commands allow you to.
+
+Define and change table structures.
+Manage columns, constraints, and indexes.
+Control schema changes safely and effectively.
