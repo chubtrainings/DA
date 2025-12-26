@@ -61,6 +61,50 @@ ora_pmon_mydb2
 
 
 lsnrctl status
+-----------
+export ORACLE_HOME=/home/oracle/oracle
+export PATH=$ORACLE_HOME/bin:$PATH
+
+=====================================================
+		Make it permanent (VERY IMPORTANT)
+
+		Edit oracle user profile:
+
+		vi ~/.bash_profile
+
+
+		Add these lines:
+
+		export ORACLE_HOME=/home/oracle/oracle
+		export PATH=$ORACLE_HOME/bin:$PATH
+		export ORACLE_SID=orcl
+
+
+		Reload:
+
+		source ~/.bash_profile
+
+		Verify everything is running
+		Listener status
+		lsnrctl status
+
+		Databases running
+		ps -ef | grep pmon | grep -v grep
+		
+		
+	Best Practice (Production)
+
+	Always set ORACLE_HOME
+
+	Always run:
+
+	dbstart $ORACLE_HOME
+	dbshut  $ORACLE_HOME
+
+======================================================
+
+
+
 
 -----------------------------
 
