@@ -1,0 +1,81 @@
+To connect to multiple databases at a time on any server.
+
+
+cat /etc/oratab
+
+
+
+output:
+-------
+orcl:/home/oracle/oracle:N
+mydb2:/home/oracle/oracle:N
+prod:/home/oracle/oracle:N
+
+
+cat /etc/oratab
+ps -ef | grep pmon
+lsnrctl status
+
+
+What your /etc/oratab means right now
+	orcl:/home/oracle/oracle:N
+	mydb2:/home/oracle/oracle:N
+	prod:/home/oracle/oracle:N
+	
+The last column is N for all databases.
+N means:
+
+	Do NOT start this database automatically
+
+	dbstart will skip it
+
+	On reboot or listener restart, only manually started DB stays up
+
+	This is exactly why you can connect to only one DB at a time.
+
+The Fix (Very Simple & Safe)
+
+Change N → Y for BOTH databases
+
+sudo vi /etc/oratab
+		orcl:/home/oracle/oracle:Y
+		mydb2:/home/oracle/oracle:Y
+		prod:/home/oracle/oracle:Y
+
+su - oracle
+dbstart
+
+If dbstart says $ORACLE_HOME not set, run:
+
+	export ORACLE_HOME=/home/oracle/oracle
+	dbstart $ORACLE_HOME
+	
+	
+If dbstart says $ORACLE_HOME not set, run:
+
+	export ORACLE_HOME=/home/oracle/oracle
+	dbstart $ORACLE_HOME
+	
+ora_pmon_prod
+ora_pmon_mydb2
+
+
+lsnrctl status
+
+-----------------------------
+
+Steps to Create a DB:
+
+	On Linux:
+		1. Goto oracle home folder in my case it is /home/oracle/oracle.
+		2. list all files using command ls
+		   $ ls
+			check for bin folder existing or not.
+			then goto bin folder
+		   $cd bin
+			check for dbca file (script file) exists or not
+			run the script dbca using the command
+		   $ sh ./dbca
+		     This command will open the Database Configuration Assistant Wizard.
+			 
+			 follow the steps to crete database.
