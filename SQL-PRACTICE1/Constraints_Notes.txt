@@ -1,0 +1,293 @@
+Constraints
+------------
+- In Oracle Database, CONSTRAINTS are rules applied to table columns to enforce the data integrity and consistency and accuracy.
+- They will ensure that only valid data enters in to the database. 
+- Constraints are schema-level rules that restrict the type of data that can be stored in a table. 
+- Oracle automatically checks these rules whenever data is inserted, updated, or deleted.
+
+- Types of Constraints in Oracle 
+---------------------------------
+1. Not Null - Ensures a column cannot contain a NULL values.
+2. Unique Constraint - Ensures all values in a column (or set of cloumns) are unique 
+3. Primary Key Constraint - It is a combination of Unique + Not Null, One table can have only one PK.
+
+	Ex: 
+		create table dept (
+			dno number primary key,
+			dname varchar2(10)
+			);
+			
+4. Foreign Key Constraint (Also called as Referential Constraint)
+5. Check Constraint
+6. Default Constraint
+
+
+4. FK Constraint 
+-----------------
+- Maintains the referential integrity between two tables.
+
+SQL> alter table emp 
+	 add constraint emp_dept_fk
+	 foreign key (dno)
+	 references dept(dno) ;
+	 
+- Its like a parent-child relation between the tables. 
+
+5. Check Constraint
+---------------------
+- Allows data that meets a specific condition.
+
+SQL> alter table emp 
+	 add constraint emp_sal_check check (sal > 0);
+	 
+6. Default Constraint
+----------------------
+- It automatically assigns a default value when non is provided.
+
+SQL> create table orders (
+	 order_id number primary key,
+	 order_date date default sysdate);
+	 
+- How to view the constraints
+------------------------------
+- SQL> select constraint_name,  constraint_type, status 
+	   from user_constraints where table_name='EMP';
+- SQL> desc user_cons_column 
+
+Constraints Types
+-------------------
+C - Check 
+P - PK 
+R - FK 
+U - Unique
+N - Not Null
+
+Enabling/Disabling the constraints
+-----------------------------------
+SQL> alter table <table_name> enable/disable constraint <constraint_name>;
+
+Dropping a constraint
+----------------------
+SQL> alter table <table_name> drop constraint <constraint_name>; 
+
+
+Oracle Data Types
+------------------
+- Oracle provides a wide range of data types that define the kind of data a column can store.
+- These data types ensure proper data handling, storage and operations. 
+
+- Data Types
+------------
+	- Character Data Types 
+		- CHAR (n)- Fixed length character string --> CHAR(30)
+			- NCHAR (n) 
+		- VARCHAR (n) - Variable length string --> VARCHAR(30) -> Max lenght is 2000 
+			- NVARCHAR(n)
+		- VARCHAR2 (n) - Oracle introduced this data type. -> Max lenght is 4000
+			- NVARCHAR2(n)
+		- LOB - Large Objects - Character LOB, NCLOB - National Character LOB, BLOB - Binary LOB 
+		
+	- Number Data Types 
+		- NUMBER (n) - Stores the number data 
+		- NUMBER (p,s) - Variable Precision nunber -> Number (5,2)
+		- INTEGER - Same as NUMBER(n) 
+		- FLOAT - Floating numnber with binary precision 
+		
+	- Date & Time Data Types 
+		- DATE -  Stores date + time (precision is in seconds)
+		- TIMESTAMP - Date + time wiht fractional seconds )
+		- TIMESTAMP WITH TIME ZONE - Includes time zone 
+		
+	
+	SQL> create table course 
+		( name char(10),
+		 course varchar(10),
+		 fee number(10),
+		 email varchar2 (30),
+		 DOJ DATE
+		); 
+	
+Functions in Oracle Database 
+---------------------------------
+- Oracle Functions are predefined routines that take input values, and perform an operation and return a value 
+- In simple words, Function return a value 
+- They can be used in SELECT, WHERE, ORDER BY, GROUP BY and HAVING and many other SQL operations. 
+- Funtions fall into two major categories:
+	1. Single Row(Scalar) Functions
+	-------------------------------
+	- These functions operte on one row at a time and return one value per row. 
+		Types:
+			- String Functions
+				- UPPER/LOWER/INITCAP
+			- Numeric Functions
+			- Date Functions
+			- Conversion Functions
+			- Conditional Functions
+			- General Functions
+			
+	2. Multiple-Row (Aggregate) Functions 
+	---------------------------------------
+	- These functions operate on group of rows and return one result per group 
+		Types:
+			- SUM
+			- COUNT
+			- AVG
+			- MAX/MIN
+			- STDDEV 
+			- VARIANCE
+			
+Note: Always Function will return only one value 
+
+Working with Single Row Functions 
+----------------------------------
+	1. String Functions
+	-------------------
+	- UPPER/LOWER/INITCAP 
+	- Convert case of the character 
+		SQL> select upper('oracle'), lower('SQL'), initcap ('oracle database course') from dual;
+		
+	- DUAL - table is a dummy table in Oracle database and can be used for any type of calucations and tasks.
+	- In Oracle, data is always stored in upper case.
+	
+	- LENGTH
+	- Returns number of characters
+		SQL>  select length('I live in Hyderabad') from dual; --?
+		SLQ> select length('Hyderabad') from dual; --> 9
+		
+	- SUBSTR
+	- Extract part of string 
+		SQL> select substr('oracle', 2, 3) from dual; --> rac 
+		
+	- INSTR
+	- Find a position of a character/string 
+	
+		SQL> select instr('Oracle SQL','SQL') from dual --8
+		
+	- REPLACE
+	- Replaces the occurrence of substring 
+		SQL>  select replace ('A-B-C','-','/') FROM DUAL; --> A/B/C
+		SQL> liril(a), malayalam (z)
+		
+Functions in Oracle Database 
+---------------------------------
+- Oracle Funtions are predefined routines that take input values, and perform an operation and return a value 
+- In a simple words, Funtion return a value 
+- They can be used in SELECT, WHERE, ORDER BY, GROUP BY and HAVING and many other SQL opertaions. 
+- Funtions fall into two major categories:
+	1. Single Row (Scalar) Funtions
+	-------------------------------
+	- These functions operte on one row at a time and return one value per row. 
+		Types:
+			- String Functions
+				- UPPER/LOWER/INITCAP/LENGTH/SUBSTR/INSTR/LTRIM/RTRIM/TRIM
+			- Numeric Functions
+				- ROUND, TRUNC, MOD, ABS
+			- Date Functions
+				- SYSDATE, SYSTIMESTAMP, LAST_DAY, ADD_MONTHS, NEXT_DAY 
+			- Conversion Functions
+				- TO_CHAR, TO_DATE, TO_NUMBER
+			- Conditional Functions
+			
+			- General Functions
+			
+	2. Multiple-Row (Aggregate) Functions 
+	---------------------------------------
+	- These functions operate on group of rows and return one result per group 
+		Types:
+			- SUM
+			- COUNT
+			- AVG
+			- MAX/MIN
+			- STDDEV 
+			- VARIANCE
+			
+Note: Always Funtion will return only one value 
+
+Working with Single Row Functions 
+----------------------------------
+	1. String Functions
+	-------------------
+	- UPPER/LOWER/INITCAP 
+	- Convert case of the character 
+		SQL> select upper('oracle'), lower('SQL'), initcap ('orClE database course') from dual;
+		
+	- DUAL - table is a dummy table in Oracle database and can be used for any type of calucations and tasks.
+	- In Oracle, data is always stored in upper case.
+	
+	- LENGTH
+	- Returns number of characters
+		SQL>  select length('I live in Hyderabad') from dual; --?
+		SLQ> select length('Hyderabad') from dual; --> 9
+		
+	- SUBSTR
+	- Extract part of string 
+		SQL> select substr('oracle', 2, 3) from dual; --> rac 
+		
+	- INSTR
+	- Find a position of a character/string 
+	
+		SQL> select instr('Oracle SQL','SQL') from dual --8
+		
+	- REPLACE
+	- Replaces the occurrence of substring 
+		SQL>  select replace ('A-B-C','-','/') FROM DUAL; --> A/B/C
+		SQL> liril(a), malayalam (z)
+		
+	- Triming - Cutting the edge of a text 
+	- LTRIM/RTRIM/TRIM 
+	- Remove leading, trailing,  or both  side characters 
+	- SQL>  select trim('   ORACLE_ _') from dual; --> ORACLE 
+	
+		
+	DATE FUNCTIONS 
+	---------------
+		SYSDATE - Returns current date/time. 
+		
+		SQL> select sysdate from dual;
+		
+		SQL> select sysdate-2 from dual; Two days back from today
+		
+		SQL> select sysdate+2 from dual; Two days from today.
+		
+		SYSTIMESTAMP - Returns timestamp with time zone.
+		
+		SQL> select systimestamp from dual;
+		
+		ADD_MONTHS - Add or substrct months 
+		
+		SQL> select add_months(sysdate, 2) from dual; --> add two months to sysdate 
+		SQL> select add_months(sysdate, -15) from dual; --> this will print 15 months before date to sysdate 
+		
+		MONTHS_BETWEEN - Difference between two dates in months -- Taks1
+		
+		LAST_DAY - This will print last day of the give date.
+		NEXT_DAY
+		
+	CONVERSION FUNCTIONS
+	---------------------
+	
+		- TO_CHAR - Convert date/number to string.
+		
+		SQL> select to_char(sysdate, 'DD-MON-YYYY HH24:MI') FROM DUAL;
+		
+		
+		- TO_DATE - Converts string to date 
+		
+		SQL> select to_date('25-12-2024', 'DD-MM-YYYY') from dual;
+		
+		TO_NUMBER - convert string to number 
+
+
+
+
+
+
+	 
+
+	 
+	 
+	 
+
+
+
+
