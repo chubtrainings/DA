@@ -1,0 +1,1055 @@
+DA:
+
+
+DAY 1:
+------
+	SQL
+	DAtabases
+	BI Tools - PowerBI
+	Python
+	AWS
+	git,github
+	MockInterviews
+	Mini Project
+	Major project
+	Resume Preparation
+	
+	
+	1. Introduction
+		-- DAtabases & Data Types
+		-- SQL Commands
+		-- SQL Components
+		-- SQL Coding Style & Setup Environment.
+	2. Query Data	
+		-- DDL
+			-- CREATE
+			-- ALTER
+			-- DROP
+			-- RENAME
+			-- TRUNCATE
+			-- MERGE
+		-- DML
+			-- INSERT
+			-- UPDATE
+			-- DELETE
+			
+		-- Filtering Data
+			-- COMPARISION OPERATORS
+			-- LOGICAL OPERATORS
+			-- BETWEEN
+			-- IN 
+			-- LIKE
+			
+		-- Combining Data
+			-- BASIC JOINS
+				-- INNSER JOIN
+				-- LEFT JOIN
+				-- RIGHT JOIN
+				-- FULL JOIN
+				
+			-- ADVANCED JOINS
+				-- LEFT ANTI JOIN
+				-- RIGHT ANTI JOIN
+				-- FULL ANTI JOIN
+				-- CROSS JOIN
+			
+			-- HOW TO CHOOSE RIGHT JOIN
+			-- HOW TO JOIN MULTIPLE TABLES
+			
+		-- SET OPERATORS
+			-- UNION
+			-- UNION ALL
+			-- EXCEPT
+			-- INTERSECT
+			
+		-- ROW LEVEL FUNCTIONS
+			-- STRING FUNCTIONS
+			-- NUMBER FUNCTIONS
+			-- DATE FUNCTIONS
+			-- NULL FUNCTIONS 
+			-- CASE STATEMENTS
+			
+		-- AGGREGATION & ANALYTICAL FUNCTIONS
+			-- AGGREGATION FUNCTIONS
+			-- WINDOW BASICS
+			-- WINDOW AGGREGATE FUNCTIONS
+			-- WINDOW RANK FUNCTIONS
+			-- WINDOW VALUE FUNCTIONS
+		
+		
+			
+		
+		-- ADVANCED SQL
+			-- SUBQUERIES
+			-- CTE
+			-- VIEWS
+			-- CTAS TABLE & TEMPORARY TABLE
+			-- STORED PROCEDURES
+			-- TRIGGERS
+			
+		-- PERFORMANCE OPTIMIZATION
+			-- INDEXES
+			-- PARTITIONS
+			-- PERFORMANCE TIPS
+			
+		-- AI & SQL
+			-- HOW TO USE AI Tools
+			-- CHATGPT & COPILOT
+			
+		-- SQL PROJECTS
+			-- DATA WAREHOUSE Project
+			-- EXPLORATORY DATA ANALYSIS PROJECT(EDA)
+			-- ADVANCED DATA ANALYTICS PROJECT
+			
+			
+		SQL - STRUCTURED QUERY LANGUAGE
+		
+			-- QUERY LANGUAGE	--> QUESTIONS -- ASK QUESTIONS TO ORACLE
+				-- PROCEDURAL LANGUAGES - JAVA,C, C++,PYTHON, RUBY ETC.
+			
+			
+			SQL - STRUCTURED QUERY LANGUAGE
+
+				-- QUERY - QUESTION
+				-- PROCEDURAL LANGUAGES - JAVA,C,C#, PYTHON
+				-- XML
+				-- HTML
+				-- JSON
+				-- CL - HCL
+				-— STRUCTURED? MEANS 
+					-> DATA - STRUCTURED, SEMI-STRUCTURED,
+				-- STRUCTURED QUERY LANGUAGE
+				-- SEQUEL - STRUCTURED ENGLISH QUERY LANGUAGE -- SQL
+				-- ANSI - AMERICAN NATIONAL STANDARDS INSTITUTE
+				-- ANSI OWNS SQL
+				-- SQL IS AN OPEN SOURCE LANGUAGE
+				-- OPEN SOURCE - WE CAN DOWNLOAD THE SOURCE CODE.
+				-- PURPOSE - IT IS USED TO COMMUNICATE WITH ANY RDBMS DATABASE IN THE WORLD.
+				-- SQL WILL BE DISTRIBUTED WITH ALL DATABASE SOFTWARES.
+				-- ORACLE DATABASE BINARIES - SQLPLUS
+				-- MYSQL DATABASE BINARIES - MYSQL
+				-- POSTGRES DATABASE BINARIES - PSQL
+				-- LIKE WISE EVERY DATABASE HAS IT OWN SQL
+				
+			2nd generation - Data Structures, ADA
+			3rd generation - COBOL, PASCAL, C, C#, Java, Python, Ruby
+			4th generation - SQL, HCL etc
+
+				-- Language - what to do , how to do
+				-- What to do
+				-- IBM, ORACLE, MS, HP - 15 - 20% DIFFERENCE WILL BE THERE IN EVERY SQL.
+				
+			SQL: SUBDIVIDED INTO 5 LANGUAGES.
+				-- DDL - DATA DEFINITION LANGUAGE
+						-- CREATE, ALTER, RENAME, DROP, TRUNCATE.
+				-- DML - DATA MANIPULATION LANGUAGE
+						 -- INSERT, DELETE, UPDATE, MERGE, UPSERT.
+				-- DCL - DATA CONTROL LANGUAGE
+						-- GRANT, REVOKE
+				-- DQL/DRL - DATA RETRIEVAL/QUERY LANGUAGE
+						-- SELECT
+				-- TCL - TRANSACTION CONTROL LANGUAGE
+						-- COMMIT (SAVE DATA), ROLL BACK(DISCARD DATA), SAVE POINT (TEMPORARILY SAVE DATA).
+				
+			CONCEPTS:
+				-- RESERVED KEY WORDS
+				-- NAMING CONVENTIONS
+				-- DATABASE OBJECTS
+				-- USERS
+				-- PERMISSIONS
+				-- PRIVILEGES
+				-- ROLES.
+				
+				-- OPERATORS
+				-- FUNCTIONS
+				-- PROCEDURES
+				-- PACKAGES.
+				
+DAY 2 & DAY 3:
+--------------
+
+	Installing the database software - Oracle/Mysql/Postgres
+	
+	1. Pre-Installation:
+
+		1. Download the software/binaries and stage(making the software ready) it.
+		- https://www.oracle.com/in/database/technologies/oracle19c-windows-downloads.html
+		- You need oracle credentails to download it.
+		- The binaries size will be around ~3GB.
+		2. Make sure the the user who is installing the software has appropriate privileges.
+		- In windows, we need to install the software under ADMIN user --> ADMINISTRATOR
+		- Where as in Linux/Unix we need to install the binaries under sperate user, NOT under ADMIN user
+		3. Create the neccessary directory strucutre.
+		- Since we are install the binaries under admin user in windows, admin will have all the permission on
+		the all the drives --> C:, D: etc.
+		- But we will leave it to default location.
+		- Where as with linux, the story is different.
+
+	2. Installation
+
+		1. Now that we completed with pre-installation, we need to proceed with installing oracle dataabase
+		binaries.
+
+		2. Navigate to the software location and double-click on "setup.exe" file. It will pop-up oracle installer
+		3. Complete the installation by clicking the "Next" buttom and by giving the values when it asked.
+
+	3.Post-Installation
+
+		-- Now that binaries are installed, we need to create the database.
+		-- We use DBCA (Database Configuration Assistant) to create the a brand new database.
+		-- We need to download Oracle SQL Developer (Client) and install it.
+		-- Once above steps are done. We need to start the listener from services page.
+		-- Try to connect to Oracle DB from SQL developer.
+		
+	Same steps we can use to install the Oracle software on Linux
+
+		-- Since we need Linux OS, we need to install virtual machine so that we can install Linux on top of VM
+			and then we can install Oracle, mysql, postgres on the same
+		
+	select * from global_name;
+
+		SQL has five sub languages
+		# DDL  - DATA DEFINITION LANGUAGE - CREATE, ALTER, DROP, RENAME, TRUNCATE
+		# DML - DATA MANUPULATION LANGUAGE - INSERT, UPDATE, DELETE, MERGE
+		# DRL - DATA RETRIVAL 1ANGUAGE - SELECT
+		# DCL - DATA CONTROL 1ANGUAGE - GRANT, REVOKE
+		# TCL - TRANSACTION CONTROL LANGUAGE - COMMIT, ROLLBACK, SAVEPOINT
+
+		
+
+		
+		# DATABASE USERS
+			# ACCOUNTS
+			# HR
+			# ADMIN
+			# SALES
+			etc.
+			
+	
+DAY 4:
+------	
+	Installing Virtual Machine on Windows
+
+		-- VM - A machine inside a machine is called a Virtual Machine.
+		-- There are multiple vendors available to provide the VM software.
+		-- VM Ware - License/Key
+		-- Virtual Box - Oracle Corp.
+		
+	Install Linux on VM
+		-- Install Oracle Database software and create database
+		-- Install MySQL Database software and create database
+		-- Install Postgres Database software and create database
+		-- CLient - SQL Developer
+		-- Client - Work Bench
+
+		
+	Tasks:
+	------
+		-- Oracle Database software and create database -- completed
+		--MySQL Database software and create database -- completed
+		-- Postgres Database software and create database -- completed
+		-- WinScp software - used for file transfers across windows to linux and 
+			-- CLient - SQL Developer -- Completed
+			-- Client - Work Bench -- Completed
+			
+		Installing mysql DB:
+		
+			$ yum install -i mysql -y     -- command to install mysql.
+			
+			$ rpm -qa | grep mysql    -- command to check the installed packages containing  mysql.
+			
+			check and start the services:
+			
+				$ systemctl status mysqld 
+				$ systemctl start mysqld  (as root user)
+				$ systemctl enable mysqld (to start the service upon each reboot)
+				
+			
+		Installing Postgres DB:
+		
+			$ yum install postgres* -y   -- command to install postgres.
+			
+			$ rpm -qa | grep -i postgres  -- command to check the installed packages containing postgres.
+			
+				$ systemctl status postgresql
+				$ systemctl list-units --type=service | grep -i postgres
+				
+				Once the correct name is known then start the service:
+				
+				rpm -qa | grep postgresql
+				
+				$ sudo systemctl start postgresql  (as root user)
+				$ sudo systemctl enable postgresql   (to start the service upon each reboot)  this needs sudoer access.
+				$ psql --version
+				
+				
+		- Install Oracle Database software and create database
+			Note: We need to install Oracle Database Software under ADMINSTRATOR in Windows
+
+			We need to install Oracle Database software under a NORMAL user "oracle" in Linux.
+			Should not be installed under admin user "root".
+
+			- Pre-Installtion
+			- Preparing the Linux machine for installing Oracle
+			- Installing oracle-database-preinstall.rpm
+				
+				$ sudo yum install oracle-database-preinstall-21lc
+				$ id oracle
+				$ passwd oracle
+					:oracle
+					:oracle
+			
+
+			- Now we need to copy the oracle software from windows to linux using WinScp
+
+			- Installation
+				- $ cd oracle
+				- $ 1s
+				- $ sh runInstaller
+				
+DAY 13:
+--------
+	Oracle SQL
+
+			- Structured Query Language
+			- It is divided into five sub languages
+			- DDL - Data Definition Language
+			- CREATE, ALTER, DROP, RENAME, TRUNCATE
+			
+		- ORACLE HAS DIFFERENT TYPES OF OBJECTS
+
+			- TABLE
+			- VIEW
+			- INDEX
+			- CLUSTER
+			- SEQUENCE
+			- SYNONYM
+			- ETC...
+
+		- TO CREATE USER IN ORACLE
+			-- FROM SQL DEVELOPER LOGIN AS SYS USER.
+				SQL> CREATE USER <USER-NAME> IDENTIFIED BY "<PWD>"
+			-- CREATE A NEW LOGIN TO THE DATABASE USING SAME USER.
+			
+			
+			-----------------------------
+			SQL> show user
+			SQL> create user Yaamini identified by "Oracle";
+			SQL> grant connect, resource to yaamini;
+
+			SQL> Grant unlimited tablespace to yaaminif,
+			-----------------------------
+			
+DAY 14 & 15:
+------------
+
+	How to create the table in Database
+
+		Create table t1 (c1 number(5)); - DDL (AUTO COMMIT)- CREATE
+
+			SQL> Insert into t1 values (1);
+			SQL> Insert into t1 values (2);
+			SQL> Insert into t1 values (3);
+			SQL> Insert into t1 values (4);
+			SQL> Insert into t1 values (5);
+
+			SQL> Commit;
+
+			SQL> SELECT * FROM T1;
+
+			SQL> CREATE TABLE T2 (C1 NUMBER(5), C2 VARCHAR2(10));
+			SQL> INSERT INTO T2 VALUES (1,'ONE');
+
+			SQL> INSERT INTO T2 VALUES (2,'TWO');
+
+			SQL> INSERT INTO T2 VALUES (3,'THREE’);
+
+			SQL> INSERT INTO T2 VALUES (4,'FOUR’);
+
+			SQL> COMMIT;
+			
+			SQL> SELECT * FROM T2;
+			
+			
+			SQL> CREAT TABLE T3 (C1 NUMBER (3), C2 XBREHBR ED C3 NUMBER (5));
+
+			SQL> INSERT INTO T3 (C1,C2,C3) VALUES (1/ONE'11);
+			SQL> COMMIT;
+
+			SQL> SELECT * FROM T3; I
+			SQL> INSERT INTO T3 (C2,C3) VALUES (‘TWO}22);
+
+			NOTE: C1 WILL HAVE NULL VALUE.
+
+			SQL> COMMIT;
+			
+			SQL> SELECT * FROM T3;
+			
+			
+		Drop:
+		-----
+			-- Itis used to drop the database objects like - tables, indexes, clusters etc.
+			-- Once the object is dropped we cannot get it back.
+			-- Drop will remove the object permanently from the database.
+			-- To drop other user's objects you should have the right privileges.
+			
+			
+				
+			SQL> DROP TABLE <TABLE_NAME>
+				
+			SQL> SHOW USER;
+
+			SQL> CREATE TABLE demo (
+			  2  cl NUMBER(5)
+			  3  );
+
+			SQL> INSERT INTO demo VALUES (1);
+
+			SQL> COMMIT;
+
+			SQL> SELECT * FROM tab;
+
+			SQL> SELECT * FROM demo;
+
+			SQL> SELECT * FROM yaamini.t1;
+
+			SQL> GRANT SELECT ON demo TO yaamini;
+
+			SQL> SELECT * FROM yaamini.t1;
+
+			SQL> INSERT INTO yaamini.t1 VALUES (5);
+
+			SQL> COMMIT;
+
+			SQL> DELETE FROM yaamini.t1 WHERE sno = 5;
+			
+DAY 16:
+-------
+
+SQL - DDL - CREATE, ALTER, DROP, RENAME, TRUNCATE
+
+	- CREATE CMD is used to create any type of objects in the database. like tables, views, indexes etc.
+	- CREATE TABLE <table_name> (col_name <data_type>, col_name <data_type>)
+	- DROP CMD is used to drop the object like tables, indexes, views etc.
+	- ALTER - CMD used to modify the table structure. like adding a col, deleting a col(s), modify the col data length etc.
+	- DML - DATA MANIPULATION LANGUAGE - INSERT, DELETE, UPDATE.
+	- INSERT - insert cmd will allow us to load data into the table. there is no limit to load the data.
+	- DELETE - to delete a record, multiple records or all the records from a table.
+	
+		-------------------------------------------	
+			SQL> select * from tab;
+			SQL> drop table dummy purge;
+
+			SQL> describe 3;
+
+			SQL> select * from 13:
+
+			SQL> insert into T3 values (4, 'Four', 444444);
+			SQL> Alter table T3 modify C3 number (10);
+
+			SQL> Alter table T3 add C4 varchar2(10);
+			
+			SQL> Alter table T3 drop column C2;
+			
+			SQL> Alter table T4 drop (C1,C4);
+			
+		-------------------------------------------
+			
+				Note: While altering a table you should be very carefule as al the records will get effected.(for ex. one million or one billion records)
+				
+	**		CREATE ALTER, DROP, DELTE AND TRUNCATE -- all 5 commands are auto commit commands. We can not bring back the date once lost.
+	
+	** Deleting all the records from the table, the best option is TRUNCATE.
+	
+	TRUNCATE: DDL Command.
+	
+				SQL> TRUNCATE TABLE <TABLE_NAME>
+				
+		-- Once you truncate the table then there is no roll back (you can not undo it).
+		-- Data(Rows) will be deleted. But, the structure exists.
+	**	-- Deletes record and reclaim the space.
+		-- Drop will delete the complete table including the structure.
+		-- cannot use the where condition with truncate.
+	DELETE:
+		-- deletes records but, space cannot be reclaimed. 
+		-- leave the space used for the deleted record. uses next row to accommodate the new record.
+		-- Delete will delete all rows(data) from the table but, it can be rolled back as long as session exists. (TRUNCATE vs DELETE).
+		-- To delete all the records from a table we have to use below command.
+			-- once we exit from the session then it will be auto committed.
+			SQL> DELETE FROM <TABLE_NAME>   (DML command)
+			
+		-- To delete a particular record
+			SQL> DELETE FROM <TABLE_NAME> where <col-name> = <value> (condtion)
+			SQL> DELETE FROM students where studentname='aks";
+			commit/rollback
+			
+			
+DAY 17:
+-------
+
+	** A table can have upto 1000 columns.
+	‘SHOW USER
+
+	-- CREATE TABLE Tl (COL1 NUMBER (5)) 7
+	-- CREATE TABLE T2 (A NUMBER(S), B VARCHAR2(10), C NUMBER(3)); --> a tABLE CAN HAVE! UPTO 1000 COLUMNS
+
+		SQL> select * from tab where tname in ('Tl','T2");
+
+		SQL> drop table tl; --> Table is not actually dropped, rather it is moved to Recyclebin.
+		SQL> drop table t2 purge;  --> Table dropped permenantly.
+		
+		SQL> show recyclebin;
+		
+		insert into demol values (333);
+		commit;
+		
+		select count(*) from demo1;
+		
+	**	select sum(bytes/1024/1024) size_in_mb from dba_segments where segment_name = demo1;  -- To check the size that a table occupies.
+
+		delete from demol where a=333;
+
+		TRUNCATE table demol; -- We cannot rollback once truncate is issued., because it) auto commit
+		delete from demol; --
+		rollback;
+
+		insert into démol select * from demol;|
+		
+DAY 18:
+--------
+
+	DDL - Data Definition Language - CREATE, ALTER, DROP, RENAME, TRUNCATE
+	DML - Data Manipulation Language — INSERT, UPDATE, DELETE
+	TCL - Transaction Control Language - COMMIT, ROLLBACK
+	DRL/DQL - Data Query Language —- SELECT
+	DCL - Data Control Language - GRANT, REVOKE
+	Update — is the command used to modify the records in a table.
+	We can update a single record, multiple records, or even an entire table.
+	
+	WHERE clause:
+		-- is the key word used to filter the data from the table.
+		-- Always WHERE should be followed by the column name
+
+			SQL> SELECT * FROM EMP; --> all the records
+			SQL> SELECT * FROM EMP WHERE ENAME=”BOB”;
+			SQL> SELECT ENO,ENAME,SAL,DEPT FROM EMP WHERE ENAME=”BOB”;
+			SQL> SELECT ENAME, ENO, DEPT, SAL FROM EMP WHERE ENAME=”BOB”;
+			
+	Operators in Oracle:
+		
+		Arithmatic Operators: =, <>, +,-,/,
+		
+DAY 19:
+--------
+
+	Oracle - OPERATORS
+	
+		Arithmetic Operators
+				+ (Addition)
+				– (Subtraction)
+				* (Multiplication)
+				/ (Division)
+				
+				
+				% (Modulus)
+		
+		Comparison Operators:
+			= (Equal to)
+			!= or <> (Not equal to)
+			< (Less than)
+			> (Greater than)
+			<= (Less than or equal to)
+			>= (Greater than or equal to)
+
+		Logical Operators:
+			AND (Logical AND)
+			OR (Logical OR)
+			NOT (Logical NOT)
+
+		Others:
+			Concatenation Operator (Concat or ||)
+			In
+			Between
+			Null
+			Like (%,_)
+				
+	What are Operators in Oracle?
+		Operators are used to expressing the conditions in Select statements. 
+		The operator manipulates individual data items and returns a result. 
+		The data items are called operands or arguments. 
+		
+		The different types of Operators available in Oracle are as follows:
+
+			Arithmetic Operators in Oracle 
+			Assignment Operators in Oracle
+			Relational Operators in Oracle
+			Logical AND, OR, NOT Operators in Oracle
+				IN Operator in Oracle
+				BETWEEN Operator in Oracle
+				LIKE Operator in Oracle
+			SET Operators in Oracle
+				UNION Operator in Oracle
+				UNION ALL Operator in Oracle
+				INTERSECT Operator in Oracle
+				MINUS Operator in Oracle
+			Real-Time Examples of SET Operators in Oracle
+			IS NULL Operator in Oracle
+
+	Arithmetic Operators in Oracle:
+		The Arithmetic Operators in Oracle are used for performing mathematical calculations such as Addition, Subtraction, Multiplication, Module, and Division represented by the expected +, -, *(star or asterisk), %, and / forward slash symbols respectively on the given operand values. That is, they are used to perform mathematical operations on two expressions of the same or different data types of numeric data. 
+
+		The arithmetic operations can be used to create expressions on number and date data.
+		The arithmetic operations can be Used to perform any Arithmetic Operations like Addition, Subtraction, Multiplication, and Divided by.
+		The arithmetic operators can be used in any clause of a SQL statement.
+		SQL * Plus ignores the blank spaces before and after the arithmetic operator.
+		The arithmetic operators can be directly used in the SQL statement or in combination with column values. 
+		
+		
+**	How Arithmetic Operators are Evaluated in Oracle?
+		Similar to basic arithmetic calculations, the arithmetic operators in Oracle also have the same Operator Precedence. 
+		If the arithmetic expression contains more than one operator, then the multiplication and division operators are the highest priority 
+		and are evaluated first, and then the addition and minus (subtraction) operators are evaluated.
+
+	
+DAY 22:
+-------
+	
+		select * from emp; - 100 rows
+		select * from emp where zone='NORTH'; - 30 rows
+		select * from emp where dname='MARTKETING'; - 40 rows
+		select * from emp where zone='NORTH' or dname='MARTKETING'; - 70 rows
+		select * from emp where zone='GRA' and dname='ENT'; - 20 rows
+
+	Joins
+
+			- Joins are used to retrieve data from two or more tables based on related columns. They help
+			us to combine rows from different tables into meaningful results.
+
+			A join liniks rows from multiple tables — using a condition, typically a foreign key
+			relationship.
+			
+	- We use constraints to link two tables and fetch data --> primary key and foreign key.
+		- Ex: Emp.Dno = Dept.Dno
+
+		—- In Oralce there are different types of Joins:
+			- Inner Join
+			- Outer Join
+			- Full Join
+			- Cross Join
+			- Left Join
+			- Rigth Join
+			- Self Join
+			- Inner Join
+			- Results only matching rows b/w tables.
+			= Ex:
+
+			select e.ename,d.dname
+			from employees e.dno = d.dno;
+			
+		select * from categories;
+
+		select * from customers;
+
+		select * from orders;
+
+		select * from employees;
+
+		select * from orderdetails;
+
+
+		select * from shippers;
+
+		select * from suppliers;
+
+		select * from products;
+
+
+
+		-------------   JOINS  -----------------
+
+
+		SELECT C.CUSTOMERNAME, O.ORDERID, O.ORDERDATE 
+		FROM CUSTOMERS C 
+		INNER JOIN ORDERS O
+		ON C.CUSTOMERID = O.CUSTOMERID;
+
+		SELECT C.CUSTOMERNAME, O.ORDERID, O.ORDERDATE 
+		FROM CUSTOMERS C 
+		LEFT JOIN ORDERS O
+		ON C.CUSTOMERID = O.CUSTOMERID;
+
+		SELECT C.CUSTOMERNAME, O.ORDERID, O.ORDERDATE 
+		FROM CUSTOMERS C 
+		RIGHT JOIN ORDERS O
+		ON C.CUSTOMERID = O.CUSTOMERID;
+
+		SELECT * 
+		FROM CUSTOMERS C 
+		CROSS JOIN ORDERS O;
+
+
+		SELECT C.CUSTOMERNAME, O.ORDERID, O.ORDERDATE 
+		FROM CUSTOMER C 
+		FULL OUTER JOIN ORDERS O
+		ON C.CUSTOMERID = O.ORDERID;
+
+		SELECT C.CUSTOMERNAME, O.ORDERID, O.ORDERDATE 
+		FROM CUSTOMER C 
+		SELF JOIN ORDERS O
+		ON C.CUSTOMERID = O.ORDERID;
+
+
+		INNER JOIN - Returns matching rows only.
+
+		LEFT JOIN - all left  rows from left table + matched right rows in right table.
+
+		RIGHT JOIN - all right rows from right table + matched left rows from left table.
+
+		FULL OUTER JOIN - all the rows from both the tables.
+
+		CROSS JOIN - CARTESIAN PRODUCT - all the rows from left table x all the rows from the rigt table.
+
+		SELF JOIN- Joins table with itself.
+
+DAY 23:
+-------
+
+	-- Importing SCOTT Schema n working with tables for JOINS.
+	
+
+DAY 24:  
+-------
+
+	CONSTRAINTS:
+	
+		- In Oracle Database, CONSTRAINTS are rules applied to table columns to enforce the data integrity and
+		consistency and accuracy.
+
+		- They will ensure that only valid data enters in to the database.
+
+		- Constraints are schema-level rules that restict the type of data that can be stored in a table.
+
+		- Oracle automatically checks these rules whenever data is seer or deleted.
+
+		create table emp (
+
+		empno number(5) not null,
+		ename varchar2(30) not null,
+		sal number(6),
+
+		deptno number(5);
+
+		insert into emp values (101,"PETER", 2000, 10);
+
+		insert into emp values (102,"BOB", 1500, 20);
+
+		insert into emp (empno,ename) values (103,"DAVID");
+		insert into emp (ename) values ("ADI");
+
+		select * from emp1;
+		
+		
+	- Types of Constraints in Oracle
+
+				1. Not Null - Ensures a column cannot contain a NULL values.
+				2. Unique Constraint - Ensures all values in a column (or set of cloumns) are unique pee
+				3. Primary Key Constraint - It is a combination of Unique + Not Null, One table can have only one PK
+
+					Ex:
+						create table dept (
+						dno number primary key,
+						dname varchar2 (10)
+						)
+
+				4. Foreign Key Constraint (Also called as Referetial Constraint)
+				5. Check Constraint
+				6. Default Constraint
+				
+		- How to view the constraints
+
+		- SQL> select * from user_constraints where table_name='EMP';	
+
+			--------------------------------	--------------------------------
+					create table T2(C1 NUMBER(5),C2 VARCHAR? (30));
+					insert into 72 values(1, 'one");
+
+					insert into T2 values(2, 'Two");
+
+					Insert into 12 values(3,'Three'):
+
+					Commit;
+
+					Create table 13 (C1 NUMBER(S) ,C2 VARCHAR? (30) ,C3 NUMBER (5) ) +
+					INSERT INTO 73(C2,¢3) VALUES(*One*, (1))?
+					Insert into T3(C2,C3) values (*Two", (2));
+					Insert into 73(C2,C3) values (*Three", 3);
+					Commit;
+
+					Insert into Tl values (1);
+
+					Insert into Tl values (2);
+
+					Insert into Tl values (3);
+
+					Insert into Tl values(4);
+
+					Commit:
+
+					Select * from Tl.
+
+					insert into T1(sno(1));
+
+					not null,
+					not null,
+
+					into Empl values(101, ‘Peter’, 200,10);
+					into Empl values (102, "Bob", 2001, 11);
+					into Empl (empno, ename) values (103, 'Peter");
+					into Empl (empno) values (104)?
+
+					describe empl;
+
+					select * from Empl where empno = 103;
+
+					select * from empl where ename = ‘Peter’;
+					
+			-------------------------------- 	--------------------------------
+
+			ASSIGNMENT : HOW TO LIST ALL THE CONSTRAINTS ON A TABLE 
+
+		SQL> SELECT * FROM USER_CONSTRAINTS WHERE TABLE_NAME = 'EMP';
+	
+	4. FK Constraint
+
+		- Maintains the referntial integrity between tow tables.
+
+				SQL> alter table
+					add constraint emp_dept_fk
+					foreign key (dno)
+					references dept(dno) ;
+
+		- Its like a parent-child relation between the tables.
+
+	5. Check Constraint
+
+		- Allows data that meets a specfic condition.
+
+				SQL> alter table emp
+				add constraint emp_sal_check check (sal > 0);
+
+	6. Default Constraint
+
+		- It automatically assigns a defaule value when none is provided.
+
+				SQL> create table orders (
+				order_id number primary key,
+				order_date date default sysdate);
+
+		- How to view the constraints
+
+				- SQL> select *// from user_constraints where table_name='EMP';
+
+
+	- How to view the constraints
+
+		SQL> select constraint_name, constraint_type, status
+			from user_constraints where table_name='EMP';
+
+		SQL> desc user_cons_column
+
+	Constraints Types:
+		
+		C - CHECK
+		P - PRIMARY KEY  (PK)
+		R - FOREIGN KEY  (FK - REFERRENTIAL)
+		U - UNIQUE
+		N - NOT NULL
+
+
+	Enabling/Disabling the constraints
+
+			SQL> alter table <table_name> enable/disable constraint <constraint_name>;
+			
+	DROPPING A CONSTRAINT:
+	
+			SQL> ALTER TABLE <TABLE_NAME> DROP CONSTRINT <constraint_name>;
+			
+	Oracle Data Types
+		- Oracle provides a wide range of data types that define the kind of data a column can store.
+		- These data types ensure proper data handling, storage and operations.
+
+		- Data Types
+		- Character Data Types
+		- CHAR (n)- Fixed length character string --> CHAR(30)
+
+		- NCHAR (n)
+		VARCHAR (n) - Variable length string --> VARCHAR(30) -> Max lenght is 2000
+
+		- NVARCHAR (n)
+		VARCHAR2 (n) - Oracle introduced this data type. -> Max lenght is 4000
+
+		- NVARCHAR2 (n)
+		LOB - Large Objects - Character LOB, NCLOB - National Character LOB, BLOB - Binmary LOB
+
+		Number Data Types
+		- NUMBER (n) - Stores the number data
+		- NUMBER (p,s) - Variable Precision nunber -> Number (5,2)
+		- INTEGER - Same as NUMBER (n)
+		- FLOAT - Floating numnber with binary precision
+
+		Date & Time Data Types
+		- DATE - Stores date + time (precision is in seconds)
+		- TIMESTAMP - Date + time wiht fractional seconds )
+		- TIMESTAMP WITH TIME ZONE - Includes time zone
+		
+		
+				SQL> create table course
+					( name char(10),
+					course varchar (10),
+					fee number (10),
+					email varchar2 (30),
+					DOJ DATE
+					);
+
+DAY 25:  
+-------
+
+	6. Default Constraint
+
+	- It automatically assigns a defaule value when non is provided.
+
+			SQL> create table orders (
+				 order_id number primary key,
+				 order_date date default sysdate);
+
+	- How to view the constraints
+
+	 		SQL> select constraint_name, constraint_type, status from user_constraints whére table_name
+
+DAY 26:  
+-------
+
+	Functions in Oracle Database
+		- Oracle Funtions are predefined routines that take input values, and perform an operation and retur
+		- In a simple words, Funtion return a value
+		- They can be used in SELECT, WHERE, ORDER BY, GROUP BY and HAVING and many other SQL opertaions.
+		- Funtions fall into two major categories:
+		
+	1. Single RoW(Scalar) Funtions
+		- These functions operte on one row at a time and return one value per row.
+	Types:
+		- String Functions
+		- UPPER/LOWER/INITCAP
+		- Numeric Functions
+		- Date Functions
+		- Conversion Functions
+		- Conditional Functions
+		- General Functions
+
+	2. Multiple-Row (Aggregate) Functions
+		- These functions operate on group of rows and return one result per group
+	Types:
+		- SUM
+		- COUNT
+		- AVG
+		- MAX/MIN
+		- STDDEV
+		
+	Note:  Function always returns a only one value.
+	
+DAY 27:  
+-------
+
+	Working with Single Row Functions
+
+		/ LOWER/ INITCAP
+			- Convert case of the character
+				SQL> select upper(‘oracle"), lower ('SQL'), initcap ("oracle database course') from dual;
+			- DUAL - table is a dummy table in Oracle database and can be used for any type of calucations a
+			- In Oracle, data is always stored in upper case.
+
+		LENGTH
+			- Returns number of characters
+				SQL> select length('I live in Hyderabad') from dual; --?
+				SQL> select length('Hyderabad') from dual; --> 9
+		SUBSTR
+			- Extract part of string
+				SQL> select substr('oracle', 2, 3) from dual; --> rac
+		INSTR
+			- Find a position of a character/string
+
+				SQL> select instr('Oracle SQL','SQL') from dual --8
+				
+		REPLACE
+			- Replaces the occurrence of substring
+				SQL> select replace ('A-B-C','-"','/') FROM DUAL; --> A/B/C
+				SQL> liril(a), malayalam (z)
+
+
+	-----------------------------------------------------------------------------------------
+	Examples:
+	
+		
+		SQL> SELECT ROUND(12.567, 2)FROM DUAL;
+				ROUND(12.567,2)
+				----------------
+				12.57
+		SQL> SELECT ROUND(12.567, 1)FROM DUAL;
+				ROUND (12.567,1)
+				----------------
+				12.6
+		SQL> SELECT TRUNC(12.567, 2)FROM DUAL;
+				TRUNC(12.567,2)
+				----------------
+				12.56
+		SQL> SELECT TRUNC(12.567,1)FROM DUAL;
+				TRUNC(12.567,1)
+				----------------
+				12.5
+		SQL> SELECT TRUNC(12.567,0)FROM DUAL;
+				TRUNC(12.567,0)
+				----------------
+				2
+		SQL> SELECT MOD(10,3)FROM DUAL;
+				MOD (10,3)
+				----------------
+				1
+		SQL> SELECT ABS (-10)FROM DUAL;
+				ABS (-10)
+				----------------
+				10
+		SQL> SELECT SYSDATE FROM DUAL;
+			SYSDATE
+			----------------
+			10-DEC-25
+
+		SQL> SELECT SYSTIMESTAMP FROM DUAL;
+			SYSTIMESTAMP
+			----------------
+			10-DEC-25 12.23.40.609339 AM -05:00
+
+		SQL> !date
+				The current date is: Wed 01/14/2026 
+				Enter the new date: (mm-dd-yy) 
+
+DAY 30:  
+-------
+	contd...
+	
+	1. SYSDATE:
+	
+			SQL> SELECT SYSDATE FROM DUAL;
+
+	
+			SQL> SELECT SYSTIMESTAMP FROM DUAL;
+					SYSTIMESTAMP
+					----------------
+					10-DEC-25 12.23.40.609339 AM -05:00
+
+				SQL> !date
+						The current date is: Wed 01/14/2026 
+						Enter the new date: (mm-dd-yy) 
+
+	
+	
+
