@@ -46,6 +46,7 @@ DAY 1:
 				-- LEFT JOIN
 				-- RIGHT JOIN
 				-- FULL JOIN
+				-- SELF JOIN
 				
 			-- ADVANCED JOINS
 				-- LEFT ANTI JOIN
